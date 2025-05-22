@@ -2,11 +2,17 @@
 UNAME_S := $(shell uname -s)
 
 # Paths
-MLX_DIR       := include/minilibx
+MLX_DIR       := include/minilibx 
 LIBFT_PATH    := include/libft
 
 # Repos
 MLX_REPO := https://github.com/LokiLiesmith/minilibx.git
+MLX_REPO_LINUX := https://github.com/42paris/minilibx-linux.git
+
+ifeq ($(UNAME_S),Linux)
+	MLX_REPO = $(MLX_REPO_LINUX)
+endif
+
 
 # Compiler + flags
 CC      := gcc
@@ -85,6 +91,7 @@ clean:
 fclean: clean
 	$(MAKE) -C $(LIBFT_PATH) fclean
 	rm -f $(NAME)
+	rm -rf $(MLX_DIR)
 
 re: fclean all
 
