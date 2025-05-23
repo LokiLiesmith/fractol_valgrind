@@ -54,7 +54,10 @@ int	close_handler(t_fractal *fractal)
 {
 	mlx_destroy_image(fractal->mlx, fractal->img);
 	mlx_destroy_window(fractal->mlx, fractal->win);
-	free(fractal->mlx);
+#ifdef __linux__        // only defined on Linux builds
+    mlx_destroy_display(fractal->mlx);
+    free(fractal->mlx);
+#endif
 	exit(EXIT_SUCCESS);
 	return (EXIT_SUCCESS);
 }
