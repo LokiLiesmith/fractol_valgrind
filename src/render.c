@@ -6,12 +6,11 @@
 /*   By: mrazem <mrazem@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 12:32:00 by mrazem            #+#    #+#             */
-/*   Updated: 2025/05/21 12:32:07 by mrazem           ###   ########.fr       */
+/*   Updated: 2025/05/23 11:47:07 by mrazem           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include "math.h"
 
 int	ft_render_mandelbrot(t_fractal *fractal)
 {
@@ -28,7 +27,6 @@ int	ft_render_mandelbrot(t_fractal *fractal)
 		fractal->y++;
 	}
 	mlx_put_image_to_window(fractal->mlx, fractal->win, fractal->img, 0, 0);
-	ft_printf("inside ft_render_mandelbrot: %s.\n", fractal->fractal_set);
 	return (0);
 }
 
@@ -47,7 +45,6 @@ int	ft_render_julia(t_fractal *fractal)
 		fractal->y++;
 	}
 	mlx_put_image_to_window(fractal->mlx, fractal->win, fractal->img, 0, 0);
-	ft_printf("inside ft_draw_julia: %s.\n", fractal->fractal_set);
 	return (0);
 }
 
@@ -66,7 +63,6 @@ int	ft_render_ship(t_fractal *fractal)
 		fractal->y++;
 	}
 	mlx_put_image_to_window(fractal->mlx, fractal->win, fractal->img, 0, 0);
-	ft_printf("inside ft_draw_nova: %s.\n", fractal->fractal_set);
 	return (0);
 }
 

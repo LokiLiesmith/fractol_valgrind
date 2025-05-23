@@ -6,7 +6,7 @@
 /*   By: mrazem <mrazem@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 12:19:34 by mrazem            #+#    #+#             */
-/*   Updated: 2025/05/22 15:25:43 by mrazem           ###   ########.fr       */
+/*   Updated: 2025/05/23 13:02:18 by mrazem           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ t_range			*init_range(void);
 
 //event_listeners.c
 int				key_handler(int keycode, t_fractal *fractal);
+// int				mouse_handler(int mouse_code, t_fractal *fractal);
 int				mouse_handler(int mouse_code, int x, int y, t_fractal *fractal);
 
 // render.c

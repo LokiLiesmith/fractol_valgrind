@@ -6,7 +6,7 @@
 /*   By: mrazem <mrazem@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 20:41:59 by mrazem            #+#    #+#             */
-/*   Updated: 2025/05/22 15:33:00 by mrazem           ###   ########.fr       */
+/*   Updated: 2025/05/23 12:38:54 by mrazem           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	ft_calculate_julia(t_fractal *f)
 
 	i = 0;
 	default_julia_check(f);
-
 	f->zx = (map(&f->range_x, &f->new_range_x, f->x) * f->zoom) + f->offset_x;
 	f->zy = (map(&f->range_y, &f->new_range_y, f->y) * f->zoom) + f->offset_y;
 	while ((f->zx * f->zx) + (f->zy * f->zy) <= f->escape_r_sqr && i < f->max_i)

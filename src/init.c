@@ -6,7 +6,7 @@
 /*   By: mrazem <mrazem@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 12:33:02 by mrazem            #+#    #+#             */
-/*   Updated: 2025/05/22 16:38:45 by mrazem           ###   ########.fr       */
+/*   Updated: 2025/05/23 12:39:33 by mrazem           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,7 @@ static	void	clean_ptr_to_img(t_fractal *fractal)
 		free(fractal->mlx);
 		malloc_fail();
 	}
-
 }
-
 
 void	init_mlx(t_fractal *fractal)
 {

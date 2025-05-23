@@ -6,7 +6,7 @@
 /*   By: mrazem <mrazem@student.42heilbronn.de>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 22:44:19 by mrazem            #+#    #+#             */
-/*   Updated: 2025/05/22 16:12:04 by mrazem           ###   ########.fr       */
+/*   Updated: 2025/05/23 12:34:29 by mrazem           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	key_handler(int keycode, t_fractal *fractal)
 {
-	ft_printf("Pressed key: %d\n", keycode);
 	if (keycode == 53)
 	{
 		close_handler(fractal);
@@ -38,7 +37,8 @@ int	key_handler(int keycode, t_fractal *fractal)
 
 int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
-	printf("button:%d\nx:%d | y:%d\n", button, x, y);
+	ft_printf("x:%d | y:%d\nbutton: %d\n", x, y, button);
+	ft_printf("x:%d | y:%d\n", x, y);
 	if (button == 5)
 	{
 		fractal->zoom *= 0.95;
@@ -49,15 +49,26 @@ int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 	return (0);
 }
 
+#ifdef __linux__
+
+void	free_linux(t_fractal *fractal)
+{
+	mlx_destroy_display(fractal->mlx);
+	free(fractal->mlx);
+}
+#else
+
+void	free_linux(t_fractal *fractal)
+{
+	(void)fractal;
+}
+#endif
 
 int	close_handler(t_fractal *fractal)
 {
 	mlx_destroy_image(fractal->mlx, fractal->img);
 	mlx_destroy_window(fractal->mlx, fractal->win);
-#ifdef __linux__        // only defined on Linux builds
-    mlx_destroy_display(fractal->mlx);
-    free(fractal->mlx);
-#endif
+	free_linux(fractal);
 	exit(EXIT_SUCCESS);
 	return (EXIT_SUCCESS);
 }
