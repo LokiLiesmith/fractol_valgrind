@@ -2,7 +2,7 @@
 UNAME_S := $(shell uname -s)
 
 # Paths
-MLX_DIR       := include/minilibx 
+MLX_DIR       := include/minilibx
 LIBFT_PATH    := include/libft
 
 # Repos
@@ -12,7 +12,6 @@ MLX_REPO_LINUX := https://github.com/42paris/minilibx-linux.git
 ifeq ($(UNAME_S),Linux)
 	MLX_REPO = $(MLX_REPO_LINUX)
 endif
-
 
 # Compiler + flags
 CC      := gcc
@@ -34,17 +33,17 @@ all: $(LIBFT_LIB) $(MLX_LIB) $(NAME)
 
 # Build libft
 $(LIBFT_LIB):
-	$(MAKE) -C $(LIBFT_PATH)
+	@$(MAKE) -s -C $(LIBFT_PATH)
 #Build MiniLibX
 $(MLX_LIB):
 	@if [ ! -d "$(MLX_DIR)" ]; then \
 		echo "MiniLibX directory missing, cloning…"; \
 		git clone  --depth 1 $(MLX_REPO) $(MLX_DIR); \
 		echo "Building MiniLibX"; \
-		make -C $(MLX_DIR); \
+		make -s -C $(MLX_DIR); \
 	elif [ ! -f "$(MLX_LIB)" ]; then \
 		echo "$(BGreen)libmlx.a missing, rebuilding MiniLibX...$(Color_Off)"; \
-		make -C $(MLX_DIR);	\
+		make -s -C $(MLX_DIR);	\
 	else \
 		echo "$(BGreen)MiniLibX up to date$(Color_Off)"; \
 	fi;
@@ -61,7 +60,7 @@ endif
 
 # Link fractol
 $(NAME): $(OBJ) $(LIBFT_LIB) $(MLX_LIB)
-	$(CC) $(CFLAGS) $(OBJ) \
+	@$(CC) $(CFLAGS) $(OBJ) \
 	      -L$(LIBFT_PATH) -lft \
 	      $(MLX_FLAGS) \
 	      -o $(NAME)
